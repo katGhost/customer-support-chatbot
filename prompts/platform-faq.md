@@ -35,3 +35,10 @@ FAQ:
 Customer question:
 
 {{input}}
+
+## Test
+
+**User:** How do I track my order?
+
+**PlatformOutput:** Go to your account dashboard and select "Orders" to view your order status and tracking information.
+//Flow ended in 0 second

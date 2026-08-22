@@ -89,7 +89,11 @@ Screenshots documenting the implementation and testing are stored in the `screen
 ```text
 screenshots/
 ├── flow.png
-├── prompts.png
+├── classifier.png
+├── condition-node-expressions.png
+├── bug-report.png
+├── platform.png
+├── other.png
 └── test-outputs.png
 ```
 
