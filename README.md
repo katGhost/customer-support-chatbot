@@ -7,15 +7,15 @@ A customer support chatbot that classifies incoming customer requests and routes
 The chatbot follows a simple routing architecture:
 
 ```text
-Customer Message
-       |
-       v
-  Classifier
-       |
-       v
-   Condition
-       |
-   +---+---+----------------+
+    Customer Message
+           |
+           v
+        Classifier
+           |
+           v
+        Condition
+           |
+   +-------+----------------+
    |       |                |
    v       v                v
   bug   platform          other
