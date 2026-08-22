@@ -7,23 +7,23 @@ A customer support chatbot that classifies incoming customer requests and routes
 The chatbot follows a simple routing architecture:
 
 ```text
-    Customer Message
-           |
-           v
-        Classifier
-           |
-           v
-        Condition
-           |
-   +-------+----------------+
-   |       |                |
-   v       v                v
-  bug   platform          other
-   |       |                |
-   v       v                v
-Bug     Platform        Human Support
-Report    FAQ              Helpline
-Path      Path               Path
+           Customer
+              │
+              ▼
+        ┌───────────┐
+        │ Guardrail │
+        └─────┬─────┘
+              │
+    ┌─────────┴─────────┐
+    │                   │
+   Block              Allowed
+    │                   │
+    ▼                   ▼
+Blocked           Classifier
+message                 │
+               ┌────────┼────────┐
+               ▼        ▼        ▼
+              bug    platform   other
 ```
 
 ### 1. Classifier
@@ -77,7 +77,9 @@ prompts/
 ├── classifier.md
 ├── bug-report.md
 ├── platform-faq.md
-└── other.md
+├── other.md
+├── prompt-injection-test.md
+└── tests.md
 ```
 
 These files contain the prompt text used to configure each stage of the support flow.
@@ -92,6 +94,7 @@ screenshots/
 ├── classifier.png
 ├── condition-node-expressions.png
 ├── bug-report.png
+├── guardrail.png
 ├── platform.png
 ├── other.png
 └── test-outputs.png
