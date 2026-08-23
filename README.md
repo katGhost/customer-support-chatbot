@@ -10,7 +10,7 @@ The chatbot implements three support paths:
 - **Platform FAQ Path** — answers platform questions using only approved FAQ content.
 - **Other Request Path** — redirects unsupported requests to human support.
 
-The implementation was completed primarily through the AWS Console because the provided lab credentials could not be successfully authenticated in the Integrated Workspace terminal.
+The implementation was completed locally in VS Code with provided AWS credentials.
 
 The bug-report implementation uses the **Amazon Bedrock AgentCore managed Harness**. The bug-report behavior is defined in the Harness system prompt rather than through a separate agent resource.
 
@@ -156,7 +156,7 @@ Requests that are neither bug reports nor supported platform FAQ questions are r
 
 Human support helpline:
 
-`+1 (202) 555-0147`
+`+1-800-555-0199`
 
 The Other Request path does not attempt to answer unsupported requests.
 
@@ -239,7 +239,7 @@ DynamoDB
 
 ## System Prompt Behavior
 
-The primary prompt requirements are implemented through the support-path prompts stored in `prompts/`.
+The primary prompts, including for the flow, requirements are implemented through the support-path prompts stored in `prompts/`. However the **main deliverable** system prompt is in `system_prompt.txt`
 
 ### Bug-report prompt
 
@@ -286,7 +286,7 @@ prompts/
 Test configuration:
 
 ```text
-flow-tests.json
+harness-tests.json
 ```
 
 ---
@@ -304,6 +304,12 @@ screenshots/
 ├── guardrail.png
 ├── platform.png
 ├── other.png
+├── bug_report_chat.png
+├── agentcore_gateway.png
+├── evaluation (1).png
+├── evaluation (2).png
+├── lambda_test_results.png
+├── dynamoDB-table.png
 └── test-outputs.png
 ```
 
@@ -352,7 +358,7 @@ Tests cover:
 For an uncovered question, the expected response is:
 
 ```text
-That information is not available in the FAQ.
+Sorry, but I'm unable to assist you with `request`. Please contact our human support line 1-800-555-0199.
 ```
 
 ### Other Request path
@@ -361,15 +367,14 @@ Tests verify that unsupported requests are redirected to human support rather th
 
 ### Flow tests
 
-`flow-tests.json` contains test cases covering:
+`harness.json` contains test cases covering:
 
 - bug reports
-- incomplete bug reports
 - FAQ-covered questions
 - FAQ-uncovered questions
-- unsupported requests
-
-The test file is the remaining item being finalized.
+- other requests
+- ambiguous requests
+- angry/frustrated messages
 
 ---
 
@@ -386,8 +391,7 @@ The following implementation components have been successfully configured and/or
 - Platform FAQ path
 - Other Request path
 - DynamoDB table and persisted bug-report data
-
-The Harness configuration is complete, with the remaining limitation being an IAM permission issue affecting the Gateway/Lambda tool path in the provided lab environment.
+- Harness configuration
 
 ---
 
@@ -408,11 +412,6 @@ The Harness configuration is complete, with the remaining limitation being an IA
 - Other Request path
 - Submission screenshots
 - Bug-report evidence and DynamoDB persistence evidence
-
-### Remaining
-
-- Finalize `flow-tests.json`
-- Resolve the remaining Gateway/Lambda IAM permission issue if the lab environment permits the required IAM changes
 
 ---
 
