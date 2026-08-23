@@ -6,9 +6,9 @@ A routed customer-support chatbot built with AWS services. The system classifies
 
 The chatbot implements three support paths:
 
-* **Bug Report Path** — collects the information required to create a bug report and persists the completed ticket through an AgentCore Gateway-connected Lambda tool.
-* **Platform FAQ Path** — answers platform questions using only approved FAQ content.
-* **Other Request Path** — redirects unsupported requests to human support.
+- **Bug Report Path** — collects the information required to create a bug report and persists the completed ticket through an AgentCore Gateway-connected Lambda tool.
+- **Platform FAQ Path** — answers platform questions using only approved FAQ content.
+- **Other Request Path** — redirects unsupported requests to human support.
 
 The implementation was completed primarily through the AWS Console because the provided lab credentials could not be successfully authenticated in the Integrated Workspace terminal.
 
@@ -62,9 +62,9 @@ The bug-report implementation uses the **Amazon Bedrock AgentCore managed Harnes
 
 The classifier assigns each allowed incoming request to one of three labels:
 
-* `bug` — bug reports or technical issues
-* `platform` — platform questions that should be answered from the approved FAQ
-* `other` — requests outside the supported bug-report and FAQ paths
+- `bug` — bug reports or technical issues
+- `platform` — platform questions that should be answered from the approved FAQ
+- `other` — requests outside the supported bug-report and FAQ paths
 
 The classifier returns only the classification label.
 
@@ -82,9 +82,9 @@ The Harness is configured with the AgentCore Gateway as a tool provider. The Gat
 
 Before invoking the tool, the Harness must collect:
 
-* `description`
-* `stepsToReproduce`
-* `environment`
+- `description`
+- `stepsToReproduce`
+- `environment`
 
 The Harness is instructed to:
 
@@ -139,10 +139,10 @@ Platform questions are routed to an FAQ-only support path.
 
 The FAQ path is configured to:
 
-* answer only from the approved FAQ content
-* avoid external knowledge and unsupported assumptions
-* avoid inventing information
-* return a defined fallback when the requested information is not covered
+- answer only from the approved FAQ content
+- avoid external knowledge and unsupported assumptions
+- avoid inventing information
+- return a defined fallback when the requested information is not covered
 
 Fallback response:
 
@@ -184,11 +184,7 @@ The `create_bug_report` tool accepts the three fields collected by the Harness:
           "type": "string"
         }
       },
-      "required": [
-        "description",
-        "stepsToReproduce",
-        "environment"
-      ]
+      "required": ["description", "stepsToReproduce", "environment"]
     }
   }
 ]
@@ -204,7 +200,7 @@ bugreports___create_bug_report
 
 ---
 
-# Lambda and DynamoDB
+## Lambda and DynamoDB
 
 The Lambda function is responsible for persisting completed bug reports.
 
@@ -241,7 +237,7 @@ DynamoDB
 
 ---
 
-# System Prompt Behavior
+## System Prompt Behavior
 
 The primary prompt requirements are implemented through the support-path prompts stored in `prompts/`.
 
@@ -249,31 +245,31 @@ The primary prompt requirements are implemented through the support-path prompts
 
 The bug-report system prompt instructs the Harness to:
 
-* collect all three required fields
-* ask one follow-up question at a time
-* avoid calling the tool before all required information is available
-* invoke the bug-report tool after collection is complete
-* confirm successful submission
-* provide the generated ticket ID
+- collect all three required fields
+- ask one follow-up question at a time
+- avoid calling the tool before all required information is available
+- invoke the bug-report tool after collection is complete
+- confirm successful submission
+- provide the generated ticket ID
 
 ### FAQ prompt
 
 The FAQ prompt instructs the support path to:
 
-* answer only from the provided FAQ
-* avoid outside knowledge
-* return the defined fallback for uncovered questions
+- answer only from the provided FAQ
+- avoid outside knowledge
+- return the defined fallback for uncovered questions
 
 ### Other-request prompt
 
 The Other Request prompt instructs the support path to:
 
-* avoid attempting to answer unsupported requests
-* redirect the customer to human support
+- avoid attempting to answer unsupported requests
+- redirect the customer to human support
 
 ---
 
-# Project Files
+## Project Files
 
 Prompt files are stored in:
 
@@ -295,7 +291,7 @@ flow-tests.json
 
 ---
 
-# Screenshots
+## Screenshots
 
 Implementation and test evidence is stored in:
 
@@ -313,20 +309,20 @@ screenshots/
 
 The screenshots document:
 
-* overall chatbot flow
-* classifier configuration
-* routing conditions
-* AgentCore Harness configuration
-* bug-report system prompt
-* Gateway/tool configuration
-* DynamoDB persistence
-* FAQ configuration
-* Other Request configuration
-* test outputs and evaluation evidence
+- overall chatbot flow
+- classifier configuration
+- routing conditions
+- AgentCore Harness configuration
+- bug-report system prompt
+- Gateway/tool configuration
+- DynamoDB persistence
+- FAQ configuration
+- Other Request configuration
+- test outputs and evaluation evidence
 
 ---
 
-# Test Coverage
+## Test Coverage
 
 The project covers the following support behaviors.
 
@@ -350,8 +346,8 @@ The submission evidence includes the system prompt, conversation transcript, Gat
 
 Tests cover:
 
-* FAQ questions with known answers
-* FAQ questions outside the approved content
+- FAQ questions with known answers
+- FAQ questions outside the approved content
 
 For an uncovered question, the expected response is:
 
@@ -367,11 +363,11 @@ Tests verify that unsupported requests are redirected to human support rather th
 
 `flow-tests.json` contains test cases covering:
 
-* bug reports
-* incomplete bug reports
-* FAQ-covered questions
-* FAQ-uncovered questions
-* unsupported requests
+- bug reports
+- incomplete bug reports
+- FAQ-covered questions
+- FAQ-uncovered questions
+- unsupported requests
 
 The test file is the remaining item being finalized.
 
@@ -381,43 +377,17 @@ The test file is the remaining item being finalized.
 
 The following implementation components have been successfully configured and/or captured as submission evidence:
 
-* Overall chatbot flow
-* Classifier configuration
-* Routing conditions
-* Guardrail configuration
-* AgentCore managed Harness configuration
-* Bug-report system prompt
-* Platform FAQ path
-* Other Request path
-* DynamoDB table and persisted bug-report data
+- Overall chatbot flow
+- Classifier configuration
+- Routing conditions
+- Guardrail configuration
+- AgentCore managed Harness configuration
+- Bug-report system prompt
+- Platform FAQ path
+- Other Request path
+- DynamoDB table and persisted bug-report data
 
 The Harness configuration is complete, with the remaining limitation being an IAM permission issue affecting the Gateway/Lambda tool path in the provided lab environment.
-
----
-
-## Environment Limitations
-
-The provided lab environment introduced two access restrictions during implementation.
-
-### Integrated Workspace credentials
-
-The provided lab credentials could not be successfully authenticated in the Integrated Workspace terminal.
-
-As a result:
-
-* terminal-based AWS setup could not be completed using the provided credentials
-* console-based configuration was used instead
-
-### IAM restrictions
-
-The lab environment also restricted some IAM role updates required for complete Gateway/Lambda permission configuration and troubleshooting.
-
-This affected environment permissions rather than the chatbot's routing design, prompts, Harness configuration, or console-based implementation.
-
-The project documentation therefore distinguishes between:
-
-1. **Implemented configuration** — components successfully configured and verified in the AWS Console.
-2. **Environment-dependent configuration** — actions requiring IAM or terminal access that were restricted by the provided lab environment.
 
 ---
 
@@ -425,26 +395,30 @@ The project documentation therefore distinguishes between:
 
 ### Completed
 
-* Customer-support routing design
-* Guardrail configuration
-* Classifier configuration
-* Bug-report path
-* AgentCore managed Harness configuration
-* Bug-report system prompt
-* AgentCore Gateway configuration
-* Bug-report tool schema
-* Lambda/DynamoDB persistence configuration
-* Platform FAQ path
-* Other Request path
-* Submission screenshots
-* Bug-report evidence and DynamoDB persistence evidence
+- Customer-support routing design
+- Guardrail configuration
+- Classifier configuration
+- Bug-report path
+- AgentCore managed Harness configuration
+- Bug-report system prompt
+- AgentCore Gateway configuration
+- Bug-report tool schema
+- Lambda/DynamoDB persistence configuration
+- Platform FAQ path
+- Other Request path
+- Submission screenshots
+- Bug-report evidence and DynamoDB persistence evidence
 
 ### Remaining
 
-* Finalize `flow-tests.json`
-* Resolve the remaining Gateway/Lambda IAM permission issue if the lab environment permits the required IAM changes
+- Finalize `flow-tests.json`
+- Resolve the remaining Gateway/Lambda IAM permission issue if the lab environment permits the required IAM changes
 
 ---
+
+## Sources
+
+![Tucci Articles](https://tucci.gorgias.help/en-US/articles/shipping-and-returns-380732)
 
 ## Disclaimer
 

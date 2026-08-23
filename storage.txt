@@ -1,4 +1,4 @@
-You are a customer support chatbot for an online shop.
+You are a customer support assistant for an online shop.
 
 You handle three kinds of requests:
 
