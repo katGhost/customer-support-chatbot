@@ -2,33 +2,18 @@
   "tests": [
     {
       "id": "t1_bug_report",
-      "prompt": "I found a bug in when submitting my order. The system crashed with a 403 error. Can you help me fix this issue?",
-      "expected": "The customer has mentioned finding a bug, which categorizes this message as a BUG REPORT. I need to collect three pieces of information: (a) a description of the bug, (b) the steps to reproduce it, and (c) the customer's environment (browser, OS, device). I will start by asking for a description of the bug. Please describe the bug you encountered when submitting your order."
+      "prompt": "I found a bug when submitting my order. To reproduce it, I add an item to the cart, go to checkout, enter my details, and click Place Order. I'm using Chrome on Windows 10 on an HP laptop.",
+      "expected": "Thank you for reporting the issue. Your bug report has been submitted with ticket ID <ticket_id>. Our engineeringteam will look into this and follow up with you."
     },
     {
       "id": "t2_shipping_delay",
-      "prompt": "My order was supposed to arrive yesterday, but it hasn't.",
-      "expected": "The customer is about not receiving their order. This is a platform question concerning the status of an order. I should refer to the FAQ to provide an appropriate response. "
+      "prompt": "My order was supposed to arrive yesterday, but it still hasn’t been delivered. What should I do?",
+      "expected": "I'm sorry to hear about the delay. Please check your tracking updates, mailbox, and any safe-place notes from the carrier. If the package is still missing after 24 hours (marked delivered) or is delayed beyond the last estimate, please contact support and we'll investigate."
     },
     {
       "id": "t3_other_issue",
-      "prompt": "Please recommend a birthday gift from your catalogues.",
-      "expected": "The user's request is not related to a bug report, platform question, or any other predefined category. It is a general inquiry about recommending a birthday gift, which falls under the ANYTHING ELSE category. I will refer the user to the human support line."
-    },
-    {
-      "id": "t4_uncovered_faq",
-      "prompt": "Do you offer price matching for products purchased during holiday sales?",
-      "expected": "The user's question about price matching during holiday sales is not covered by the FAQ document. Therefore, I will refer the user to the human support line."
-    },
-    {
-      "id": "t5_ambiguous_inquiry",
-      "prompt": "How long till I get my order?",
-      "expected": "The user's message is ambiguous and does not specify which order they are referring to. I need to ask for more details to determine the intent behind the message."
-    },
-    {
-      "id": "t6_angry_customer",
-      "prompt": "I ordered T-Shirts yesterday and I still have not heard back from you! My patience is running low now!",
-      "expected": "The user's message indicates frustration about not receiving an update on their order. This is a platform question concerning the status of an order. I should refer to the FAQ to provide an appropriate response."
+      "prompt": "Can you recommend running shoes from your products catalogue?",
+      "expected": "I'm sorry, but I can't recommend specific products. If you have questions about orders, shipping, returns, or need help with a bug, feel free to ask. For product recommendations, please contact our human support line at 1-800-555-0199 (Mon-Fri)."
     }
 
   ]
