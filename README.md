@@ -365,9 +365,28 @@ Sorry, but I'm unable to assist you with `request`. Please contact our human sup
 
 Tests verify that unsupported requests are redirected to human support rather than answered by the chatbot.
 
+### Implement Platform Question and Other Request Paths
+
+Due to the Bedrock Flow prompt editor size, the embedded FAQ content is shown across multiple overlapping screenshots covering top, middle and FAQ part of the prompt.
+
+```text
+- faq-prompt-node-1.png
+- faq-prompt-node-2.png
+- faq-prompt-node-3.png
+```
+
+For covered & uncovered FAQ and other request tests: 
+
+```text
+- flow-platform-covered-faq-test.png
+- flow-platform-uncovered-faq-test.png
+- flow-other-request-test.png
+- flow-other-request-test-2.png
+```
+
 ### Flow tests
 
-`harness.json` contains test cases covering:
+`flow-tests.json` found at root contains test cases covering:
 
 - bug reports
 - FAQ-covered questions
@@ -375,6 +394,8 @@ Tests verify that unsupported requests are redirected to human support rather th
 - other requests
 - ambiguous requests
 - angry/frustrated messages
+
+The `jsonl` output file is found at `project/starter/output_eval_dataset.jsonl`
 
 ---
 
