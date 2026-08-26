@@ -400,9 +400,9 @@ The `jsonl` output file is found at `project/starter/output_eval_dataset.jsonl`
 
 ---
 
-## Evaluation Documentation
+## Bedrock Evaluation Observation
 
-Covers a small documentation and final note of my own perspective on the Bedrock Flow Evaluation results and system prompt.
+Covers a small observation on the Bedrock Flow Evaluation results and system prompt.
 
 ![Evaluation Tests Documentation](./evaluation-documentation.md)
 
