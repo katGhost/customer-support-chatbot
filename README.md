@@ -306,8 +306,9 @@ screenshots/
 ├── other.png
 ├── bug_report_chat.png
 ├── agentcore_gateway.png
-├── evaluation (1).png
-├── evaluation (2).png
+├── evaluation-tests-1.png
+├── evaluation-tests-2.png
+├── evaluation-tests-3.png
 ├── lambda_test_results.png
 ├── dynamoDB-table.png
 └── test-outputs.png
@@ -396,6 +397,14 @@ For covered & uncovered FAQ and other request tests:
 - angry/frustrated messages
 
 The `jsonl` output file is found at `project/starter/output_eval_dataset.jsonl`
+
+---
+
+## Evaluation Documentation
+
+Covers a small documentation and final note of my own perspective on the Bedrock Flow Evaluation results and system prompt.
+
+![Evaluation Tests Documentation](./evaluation-documentation.md)
 
 ---
 

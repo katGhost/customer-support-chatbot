@@ -12,15 +12,15 @@ This improvement showed that the revised test cases were better aligned with the
 
 ### Correctness Score
 
-![flow-evaluation-tests-1](./screenshots/flow-evaluation-tests-1.png)
+![flow-evaluation-tests-1](./screenshots/evaluation-tests-1.png)
 
 ### Correctness Metrics
 
-![flow-evaluation-tests-3](./screenshots/flow-evaluation-tests-3.png)
+![flow-evaluation-tests-3](./screenshots/evaluation-tests-3.png)
 
 ### Prompt Details
 
-![flow-evaluation-tests-2](./screenshots/flow-evaluation-tests-2.png)
+![flow-evaluation-tests-2](./screenshots/evaluation-tests-2.png)
 
 ## Final Note
 
