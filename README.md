@@ -376,7 +376,7 @@ Due to the Bedrock Flow prompt editor size, the embedded FAQ content is shown ac
 - faq-prompt-node-3.png
 ```
 
-For covered & uncovered FAQ and other request tests: 
+For covered & uncovered FAQ and other request tests:
 
 ```text
 - flow-platform-covered-faq-test.png
